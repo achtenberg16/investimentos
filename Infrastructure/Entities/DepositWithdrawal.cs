@@ -8,8 +8,8 @@ namespace infrastructure.Entities
         public int Id { get; set; }
         public int AccountId { get; set; }
         public decimal Value { get; set; }
-        public DateTime? Date { get; set; }
-        public int? TypeId { get; set; }
+        public DateTime Date { get; set; }
+        public int TypeId { get; set; }
 
         public virtual Account Account { get; set; } = null!;
         public virtual TransactionType? Type { get; set; }

@@ -8,23 +8,25 @@ namespace WebApi.Controllers;
 public class AccountsController : ControllerBase
 {
     
-    private readonly IAccountService _service;
+    private readonly IAccountService _serviceApplication;
 
     public AccountsController(IAccountService service)
     {
-        _service = service;
+        _serviceApplication = service;
     }
     [HttpGet("{clientId:int}")]
     public async Task<IActionResult> GetAccountBalance([FromRoute]int clientId)
     {
-        var accountBalance = await _service.GetAccountBalance(clientId);
+        var accountBalance = await _serviceApplication.GetAccountBalance(clientId);
         if (accountBalance is null) return BadRequest(new {message = "conta não encontrada"});
         return Ok(accountBalance);
     }
 
-    [HttpGet("/extrato/{clientId:int}")]
+    [HttpGet("/v1/conta/extrato/{clientId:int}")]
     public async Task<IActionResult> AccountStatement([FromRoute] int clientId)
     {
-        return Ok();
+        var result = await _serviceApplication.GetAccountStatement(clientId);
+        if (result is null) return NotFound(new {message = "conta não encontrada"});
+        return Ok(result);
     }
 }

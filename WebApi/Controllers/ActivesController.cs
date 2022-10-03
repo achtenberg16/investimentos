@@ -8,17 +8,17 @@ namespace WebApi.Controllers;
 [Route("/v1/ativos")]
 public class ActivesController : ControllerBase
 {
-    private readonly IActivesService _service;
+    private readonly IActivesService _serviceApplication;
 
     public ActivesController(IActivesService service)
     {
-        _service = service;
+        _serviceApplication = service;
     }
     
     [HttpGet]
     public IActionResult GetActives()
     {
-        var actives =  _service.GetActives();
+        var actives =  _serviceApplication.GetActives();
         return Ok(actives);
     }
 }

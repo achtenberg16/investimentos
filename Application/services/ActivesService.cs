@@ -1,23 +1,24 @@
 ﻿using Application.Dto;
 using Application.interfaces;
 using infrastructure.Context;
+using infrastructure.interfaces;
 
 
 namespace Application.services;
 
 public class ActivesService : IActivesService
 {
-    private readonly Context _context;
+    private readonly ITickerDao _tickerDao;
 
-    public ActivesService(Context context)
+    public ActivesService(ITickerDao tickerDao)
     {
-        _context = context;
+        _tickerDao = tickerDao;
     }
 
 
     public IEnumerable<TickerResultDto> GetActives()
     {
-        var actives = _context.Tickers.ToList();
+        var actives = _tickerDao.GetActives();
         var activesFormatted = actives.Select(ac => new TickerResultDto 
             { Id = ac.Id, Quantity = ac.Quantity, UnitPrice = ac.UnitPrice, Ticker = ac.Ticker1 });
         return activesFormatted;
