@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IActivesService, ActivesService>();
+builder.Services.AddScoped<IAccountService, AccountsService>();
 builder.Services.AddEntityFrameworkNpgsql()
     .AddDbContext<Context>();
         builder.Services.AddEndpointsApiExplorer();
