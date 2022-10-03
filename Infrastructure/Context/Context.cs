@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using WebApi.Entities;
+using infrastructure.Entities;
 
-namespace WebApi.Context
+namespace infrastructure.Context
 {
     public partial class Context : DbContext
     {
