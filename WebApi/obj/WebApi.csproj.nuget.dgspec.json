@@ -4,6 +4,63 @@
     "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
+    "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\Application\\Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\Application\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\achte\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\achte\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\infrastructure.csproj": {
+                "projectPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -25,7 +82,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\Application\\Application.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -58,6 +119,69 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\infrastructure.csproj",
+        "projectName": "infrastructure",
+        "projectPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\infrastructure.csproj",
+        "packagesPath": "C:\\Users\\achte\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\achte\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
