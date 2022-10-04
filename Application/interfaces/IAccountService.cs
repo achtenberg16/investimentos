@@ -1,10 +1,12 @@
 ﻿using Application.Dto;
-using infrastructure.Entities;
+
 
 namespace Application.interfaces;
 
 public interface IAccountService
 {
-    public Task<AccountBalanceDto?> GetAccountBalance(int clientId);
+    public AccountBalanceDto? GetAccountBalance(int clientId);
     public Task<IEnumerable<AccountTransactionDto>?> GetAccountStatement(int clientId);
+    public string? Deposit(int accountId, TransactionValueDto transactionInfos);
+    public string? Withdrawal(int accountId, TransactionValueDto transactionInfos);
 }

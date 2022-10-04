@@ -6,6 +6,7 @@ using infrastructure.Dao;
 using infrastructure.interfaces;
 using infrastructure.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 namespace WebApi.configuration;
 
@@ -33,7 +34,9 @@ public static class Configuration
         services.AddScoped<IAccountService, AccountsService>();
         services.AddScoped<ITickerDao, TickerDao>();
         services.AddScoped<IAccountDao, AccountDao>();
-        services.AddScoped<JwtToken, JwtToken>();
+        services.AddScoped<IJwtToken, JwtToken>();
+        services.AddScoped<IUserDao, UserDao>();
+        services.AddScoped<IUsersService, UsersService>();
         services.AddEntityFrameworkNpgsql()
             .AddDbContext<Context>();
         services.AddEndpointsApiExplorer();

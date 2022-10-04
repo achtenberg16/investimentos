@@ -2,10 +2,11 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using infrastructure.interfaces;
 
 namespace infrastructure.JWT;
 
-public class JwtToken
+public class JwtToken : IJwtToken
 {
     public string Create (int userId)
     {

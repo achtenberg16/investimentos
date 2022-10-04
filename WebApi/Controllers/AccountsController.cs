@@ -1,11 +1,14 @@
-﻿using Application.interfaces;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Application.Dto;
+using Application.interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
 
 [ApiController]
-[Route("/v1/conta")]
+[Route("/v1/contas")]
 public class AccountsController : ControllerBase
 {
     
@@ -15,23 +18,43 @@ public class AccountsController : ControllerBase
     {
         _serviceApplication = service;
     }
-    [HttpGet("{clientId:int}")]
+    [HttpGet("saldo")]
     [Authorize]
-    public async Task<IActionResult> GetAccountBalance([FromRoute]int clientId)
-    {   
-        if (int.Parse(User.Claims.ToList()[0].Value) != clientId) return Unauthorized();
-        var accountBalance = await _serviceApplication.GetAccountBalance(clientId);
+    public  IActionResult GetAccountBalance()
+    {
+        var accountId = int.Parse(User.Claims.ToList()[0].Value);
+        var accountBalance =  _serviceApplication.GetAccountBalance(accountId);
         if (accountBalance is null) return BadRequest(new {message = "conta não encontrada"});
         return Ok(accountBalance);
     }
 
-    [HttpGet("/v1/conta/extrato/{clientId:int}")]
+    [HttpGet("extrato")]
     [Authorize]
-    public async Task<IActionResult> AccountStatement([FromRoute] int clientId)
+    public async Task<IActionResult> AccountStatement()
     {
-        if (int.Parse(User.Claims.ToList()[0].Value) != clientId) return Unauthorized();
-        var result = await _serviceApplication.GetAccountStatement(clientId);
-        if (result is null) return NotFound(new {message = "conta não encontrada"});
+        var accountId = int.Parse(User.Claims.ToList()[0].Value);
+        var result = await _serviceApplication.GetAccountStatement(accountId);
+        if (result is null) return NotFound(new { message = "conta não encontrada" });
         return Ok(result);
+    }
+
+    [HttpPost("deposito")]
+    [Authorize]
+    public IActionResult Deposit([FromBody] TransactionValueDto transactionInfos)
+    {
+        var accountId = int.Parse(User.Claims.ToList()[0].Value);
+        var ErrorMessage = _serviceApplication.Deposit(accountId, transactionInfos);
+        if (ErrorMessage is null)  return Ok();
+        return BadRequest(new { message = ErrorMessage });
+    }
+    
+    [HttpPost("retirada")]
+    [Authorize]
+    public IActionResult Withdrawal([FromBody] TransactionValueDto transactionInfos)
+    {
+        var accountId = int.Parse(User.Claims.ToList()[0].Value);
+        var ErrorMessage = _serviceApplication.Withdrawal(accountId, transactionInfos);
+        if (ErrorMessage is null)  return Ok();
+        return BadRequest(new { message = ErrorMessage });
     }
 }

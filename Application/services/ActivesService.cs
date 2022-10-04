@@ -1,6 +1,5 @@
 ﻿using Application.Dto;
 using Application.interfaces;
-using infrastructure.Context;
 using infrastructure.interfaces;
 
 
@@ -19,8 +18,7 @@ public class ActivesService : IActivesService
     public IEnumerable<TickerResultDto> GetActives()
     {
         var actives = _tickerDao.GetActives();
-        var activesFormatted = actives.Select(ac => new TickerResultDto 
-            { Id = ac.Id, Quantity = ac.Quantity, UnitPrice = ac.UnitPrice, Ticker = ac.Ticker1 });
+        var activesFormatted = actives.Select(ac => new TickerResultDto(ac.Id, ac.Ticker1, ac.Quantity, ac.UnitPrice));
         return activesFormatted;
     }
 }

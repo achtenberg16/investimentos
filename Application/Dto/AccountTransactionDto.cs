@@ -1,11 +1,7 @@
-﻿namespace Application.Dto;
+﻿using System;
 
-public record AccountTransactionDto
-{
-    public int Id { get; set; }
-    public int AccountId { get; set; }
-    public decimal Value { get; set; }
-    public DateTime Date { get; set; }
-    public int type { get; set; }
-}
+namespace Application.Dto;
+
+public record AccountTransactionDto(int Id, int AccountId, decimal Value, DateTime Date, int type);
+
 

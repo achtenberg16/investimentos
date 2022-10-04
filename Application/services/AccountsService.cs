@@ -1,4 +1,7 @@
-﻿using System.Runtime.Intrinsics.Arm;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Intrinsics.Arm;
+using System.Threading.Tasks;
 using Application.Dto;
 using Application.interfaces;
 using infrastructure.Context;
@@ -16,11 +19,11 @@ public class AccountsService : IAccountService
         _accountDao = Dao;
     }
 
-    public async Task<AccountBalanceDto?> GetAccountBalance(int userId)
+    public AccountBalanceDto? GetAccountBalance(int userId)
     {
-        var account = await _accountDao.GetAccountBalance(userId);
+        var account = _accountDao.GetAccountBalance(userId);
         if (account is null) return null;
-        var accountFormatted = new AccountBalanceDto { Balance = account.Balance, Id = account.Id, UserId = account.UserId };
+        var accountFormatted = new AccountBalanceDto  (account.Id, account.UserId, account.Balance);
         return accountFormatted;
     }
 
@@ -30,14 +33,25 @@ public class AccountsService : IAccountService
         if (!account) return null;
         var transactions = _accountDao.GetAccountStatement(clientId);
         var transactionsFormated =
-            transactions.Select(t => new AccountTransactionDto
-            {
-                type = t.TypeId, 
-                Date = t.Date,
-                Id = t.Id,
-                Value = t.Value,
-                AccountId = t.AccountId
-            });
+            transactions.Select(t => new AccountTransactionDto(t.Id, t.AccountId, t.Value, t.Date, t.TypeId));
         return transactionsFormated;
+    }
+
+    public string? Deposit(int accountId, TransactionValueDto transactionInfos)
+    {
+        if (transactionInfos.value <= 0) return "O valor de depósito deve ser maior que 0";
+        var accountFound = _accountDao.GetAccountBalance(accountId);
+        _accountDao.Deposit(accountFound, transactionInfos.value);
+        return null;
+    }
+
+    public string? Withdrawal(int accountId, TransactionValueDto transactionInfos)
+    {
+        if (transactionInfos.value <= 0) return "O valor de retirada deve ser maior que 0";
+        var accountFound = _accountDao.GetAccountBalance(accountId);
+        if (accountFound.Balance < transactionInfos.value)
+            return $"valor invalido, seu saldo é de: {accountFound.Balance}";
+        _accountDao.Withdrawal(accountFound, transactionInfos.value);
+        return null;
     }
 }
