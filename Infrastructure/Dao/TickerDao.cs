@@ -17,4 +17,11 @@ public class TickerDao : ITickerDao
         var actives =_context.Tickers.ToList();
         return actives;
     }
+    
+    public Ticker? GetActiveById(int id)
+    {
+        var actives = _context.Tickers.FirstOrDefault(t => t.Id == id);
+        return actives;
+    }
+    
 }

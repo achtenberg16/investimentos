@@ -23,4 +23,13 @@ public class ActivesController : ControllerBase
         var actives =  _serviceApplication.GetActives();
         return Ok(actives);
     }
+    
+    [HttpGet("{id:int}")]
+    [AllowAnonymous]
+    public IActionResult GetById([FromRoute] int id)
+    {
+        var active =  _serviceApplication.GetActivesById(id);
+        if (active is null) return NotFound();
+        return Ok(active);
+    }
 }

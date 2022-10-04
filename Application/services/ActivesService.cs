@@ -21,4 +21,12 @@ public class ActivesService : IActivesService
         var activesFormatted = actives.Select(ac => new TickerResultDto(ac.Id, ac.Ticker1, ac.Quantity, ac.UnitPrice));
         return activesFormatted;
     }
+    
+    public TickerResultDto GetActivesById(int id)
+    {
+        var active = _tickerDao.GetActiveById(id);
+        if (active is null) return null;
+        var activeFormatted = new TickerResultDto(active.Id, active.Ticker1, active.Quantity, active.UnitPrice);
+        return activeFormatted;
+    }
 }

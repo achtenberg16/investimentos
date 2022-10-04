@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Application.Dto;
+﻿using Application.Dto;
 
 namespace Application.interfaces;
 
 public interface IActivesService 
 {
     public IEnumerable<TickerResultDto> GetActives();
+    public TickerResultDto GetActivesById(int id);
 }
