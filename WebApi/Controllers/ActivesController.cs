@@ -1,5 +1,6 @@
 ﻿using Application.Dto;
 using Application.interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -16,6 +17,7 @@ public class ActivesController : ControllerBase
     }
     
     [HttpGet]
+    [AllowAnonymous]
     public IActionResult GetActives()
     {
         var actives =  _serviceApplication.GetActives();
