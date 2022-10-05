@@ -14,7 +14,7 @@ public class TickerDao : ITickerDao
 
     public IEnumerable<Ticker> GetActives()
     {
-        var actives =_context.Tickers.ToList();
+        var actives = _context.Tickers.ToList().OrderBy(t => t.Id);
         return actives;
     }
     

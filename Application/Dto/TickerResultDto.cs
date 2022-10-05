@@ -1,3 +1,4 @@
 ﻿namespace Application.Dto;
 
-public record TickerResultDto(int Id, string Ticker, int Quantity, decimal UnitPrice);
+public record TickerResultDto(int codAtivo, string ticker, int qtdAtivo, decimal Valor);
+
