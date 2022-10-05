@@ -34,4 +34,13 @@ public class InvestimentsController : ControllerBase
         if(errorMessage is null) return Ok();
         return BadRequest(new { message = errorMessage });
     }
+
+    [HttpGet("portfolio")]
+    [Authorize]
+    public IActionResult GetAsset()
+    {
+        var accountId = int.Parse(User.Claims.ToList()[0].Value);
+        var asset = _serviceApplication.GetAsset(accountId);
+        return Ok(asset);
+    }
 }

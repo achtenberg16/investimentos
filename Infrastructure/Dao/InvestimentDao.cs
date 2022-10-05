@@ -60,4 +60,10 @@ public class InvestimentDao : IInvestimentDao
 
         _context.SaveChanges();
     }
+
+    public IEnumerable<AssetsPortfolio> GetAssetByUserId(int userId)
+    {
+        var Asset = _context.AssetsPortfolios.Where(AP => AP.UserId == userId).Include(A => A.Ticker).ToList();
+        return Asset;
+    }
 }

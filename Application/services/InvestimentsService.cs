@@ -42,4 +42,16 @@ public class InvestimentsService : IInvestimentsService
         _investimentDao.AddTransactionSellAndUpdateActives(user, active, infos.qtdeAtivo);
         return null;
     }
+
+    public IEnumerable<AssetInvestimentsDto> GetAsset(int userId)
+    {
+        var asset = _investimentDao.GetAssetByUserId(userId);
+        var assetFormatted = asset.Select(transaction =>
+        {
+            var active = transaction.Ticker;
+            return new AssetInvestimentsDto(transaction.TickerId, transaction.UserId, active.UnitPrice, active.Ticker1,
+                transaction.Quantity);
+        });
+        return assetFormatted;
+    }
 }
