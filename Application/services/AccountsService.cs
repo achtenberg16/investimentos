@@ -39,19 +39,19 @@ public class AccountsService : IAccountService
 
     public string? Deposit(int accountId, TransactionValueDto transactionInfos)
     {
-        if (transactionInfos.value <= 0) return "O valor de depósito deve ser maior que 0";
+        if (transactionInfos.valor <= 0) return "O valor de depósito deve ser maior que 0";
         var accountFound = _accountDao.GetAccountBalance(accountId);
-        _accountDao.Deposit(accountFound, transactionInfos.value);
+        _accountDao.Deposit(accountFound, transactionInfos.valor);
         return null;
     }
 
     public string? Withdrawal(int accountId, TransactionValueDto transactionInfos)
     {
-        if (transactionInfos.value <= 0) return "O valor de retirada deve ser maior que 0";
+        if (transactionInfos.valor <= 0) return "O valor de retirada deve ser maior que 0";
         var accountFound = _accountDao.GetAccountBalance(accountId);
-        if (accountFound.Balance < transactionInfos.value)
+        if (accountFound.Balance < transactionInfos.valor)
             return $"valor invalido, seu saldo é de: {accountFound.Balance}";
-        _accountDao.Withdrawal(accountFound, transactionInfos.value);
+        _accountDao.Withdrawal(accountFound, transactionInfos.valor);
         return null;
     }
 }

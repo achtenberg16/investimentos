@@ -1,3 +1,3 @@
 namespace Application.Dto;
 
-public record TransactionValueDto(decimal value);
+public record TransactionValueDto(decimal valor);
