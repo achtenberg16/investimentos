@@ -43,4 +43,13 @@ public class InvestimentsController : ControllerBase
         var asset = _serviceApplication.GetAsset(accountId);
         return Ok(asset);
     }
+    
+    [HttpGet("extrato")]
+    [Authorize]
+    public IActionResult GetOperations()
+    {
+        var accountId = int.Parse(User.Claims.ToList()[0].Value);
+        var operations = _serviceApplication.GetOperations(accountId);
+        return Ok(operations);
+    }
 }

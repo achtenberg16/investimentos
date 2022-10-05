@@ -54,4 +54,17 @@ public class InvestimentsService : IInvestimentsService
         });
         return assetFormatted;
     }
+    
+    public IEnumerable<ExtractInvestimentsDto> GetOperations(int userId)
+    {
+        var operations = _investimentDao.GetOperations(userId);
+        var operationsFormated = operations.Select(op =>
+        {
+            var oprationType = op.TypeId == 1 ? "compra" : "venda";
+            var ticker = op.Ticker;
+            return new ExtractInvestimentsDto(op.Id, op.TickerId, op.UserId, op.Quantity, op.UnitPrice, ticker.Ticker1,
+                oprationType, op.Date);
+        });
+        return operationsFormated;
+    }
 }

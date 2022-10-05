@@ -8,4 +8,5 @@ public interface IInvestimentDao
     public void AddTransactionBuyAndUpdateActives(User user, Ticker active, int quantity);
     public void AddTransactionSellAndUpdateActives(User user, Ticker active, int quantity);
     public IEnumerable<AssetsPortfolio> GetAssetByUserId(int userId);
+    public IEnumerable<Operation> GetOperations(int userId);  
 }

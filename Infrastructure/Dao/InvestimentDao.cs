@@ -63,7 +63,17 @@ public class InvestimentDao : IInvestimentDao
 
     public IEnumerable<AssetsPortfolio> GetAssetByUserId(int userId)
     {
-        var Asset = _context.AssetsPortfolios.Where(AP => AP.UserId == userId).Include(A => A.Ticker).ToList();
+        var Asset = _context.AssetsPortfolios.Where(AP => AP.UserId == userId)
+            .Include(A => A.Ticker).ToList();
         return Asset;
     }
+
+    public IEnumerable<Operation> GetOperations(int userId)
+    {
+        var operations = _context.Operations
+                .Include(o => o.Ticker)
+                    .Where(op => op.UserId == userId).ToList().OrderBy(op => op.Id);
+        return operations;
+    }
+    
 }
