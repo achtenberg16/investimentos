@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZN8oFb5YGFRmYPGmJOqkxrNV0lNVZPnEXL/sCXYKVqrMX4IjYXlgvR4ilb3Bt0Y8/1GAlZEwGk9Y6Vtm+BWkJw==",
+  "dgSpecHash": "3vMdRxvdOg+aaPaQg9Smr6u6d5X03RxsIN20DfFLsamJ+y94+7tmOiVfijVB2qMeNupKAqYLdB95wqD1AscYyw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\C#\\investimentos\\infrastructure\\infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\achte\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.9\\microsoft.aspnetcore.authentication.jwtbearer.6.0.9.nupkg.sha512",
     "C:\\Users\\achte\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

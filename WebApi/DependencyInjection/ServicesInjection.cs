@@ -7,28 +7,13 @@ using infrastructure.interfaces;
 using infrastructure.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-namespace WebApi.configuration;
+namespace WebApi.dependencyInjection;
 
 public static class Configuration
 {
-    public static IServiceCollection AddConfiguration(this IServiceCollection services)
+    public static IServiceCollection ServiceInjection(this IServiceCollection services)
     {
         services.AddAuthorization();
-        services.AddAuthentication
-                (JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey
-                        (Encoding.UTF8.GetBytes("8jku18nfjsoifjsaifjoiasjfasoifjsio")),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateLifetime = false,
-                };
-            });
-        
         services.AddScoped<IActivesService, ActivesService>();
         services.AddScoped<IAccountService, AccountsService>();
         services.AddScoped<ITickerDao, TickerDao>();

@@ -9,27 +9,10 @@
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Remove="WeatherForecast.cs" />
-      <Compile Remove="Controllers\WeatherForecastController.cs" />
-      <Compile Remove="DependencyInjection\**" />
-    </ItemGroup>
+    
 
     <ItemGroup>
       <ProjectReference Include="..\Application\Application.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="DependencyInjection\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="DependencyInjection\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="DependencyInjection\**" />
     </ItemGroup>
 
 </Project>

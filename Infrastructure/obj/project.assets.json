@@ -1031,11 +1031,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\C#\\investimentos\\infrastructure\\infrastructure.csproj",
       "projectName": "infrastructure",
-      "projectPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\infrastructure.csproj",
+      "projectPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\C#\\investimentos\\infrastructure\\infrastructure.csproj",
       "packagesPath": "C:\\Users\\achte\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\investimentos\\infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\achte\\OneDrive\\Área de Trabalho\\C#\\investimentos\\infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\achte\\AppData\\Roaming\\NuGet\\NuGet.Config"
