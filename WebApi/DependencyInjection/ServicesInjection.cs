@@ -6,12 +6,13 @@ using infrastructure.Dao;
 using infrastructure.interfaces;
 using infrastructure.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-namespace WebApi.configuration;
+namespace WebApi.dependencyInjection;
 
 public static class Configuration
 {
-    public static IServiceCollection AddConfiguration(this IServiceCollection services)
+    public static IServiceCollection ServiceInjection(this IServiceCollection services)
     {
         services.AddAuthorization();
         services.AddAuthentication

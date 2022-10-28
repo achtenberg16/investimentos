@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,9 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="WeatherForecast.cs" />
-      <Compile Remove="Controllers\WeatherForecastController.cs" />
-      <Compile Remove="DependencyInjection\**" />
+      <Compile Include="DependencyInjection\ConfigureSwaggerOptions.cs" />
+      <Compile Include="DependencyInjection\ServicesInjection.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,15 +21,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="DependencyInjection\**" />
+      <EmbeddedResource Remove="obj\**" />
     </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="DependencyInjection\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="DependencyInjection\**" />
-    </ItemGroup>
+    
 
 </Project>
